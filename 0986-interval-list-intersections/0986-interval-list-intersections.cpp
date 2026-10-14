@@ -14,19 +14,11 @@ public:
             int start2=b[j][0];
             int end2=b[j][1];
 
-            if(start1<=start2){
-                if(end1>=start2){
-                    s=max(start1,start2);
-                    e=min(end1,end2);
-                    res.push_back({s,e});
-                }
-            }
-            else{
-                if(end2>=start1){
-                    s=max(start1,start2);
-                    e=min(end1,end2);
-                    res.push_back({s,e});
-                }
+            int s=max(start1,start2);
+            int e=min(end1,end2);
+
+            if(s<=e){
+                res.push_back({s,e});
             }
             if(end1<=end2) i++;
             else j++;
