@@ -3,12 +3,8 @@ public:
     vector<vector<int>> intervalIntersection(vector<vector<int>>& a, vector<vector<int>>& b) {
         vector<vector<int>> res;
         int i=0;int j=0;
-        int s=0;int e=0;
 
-        int n=a.size();
-        int m=b.size();
-
-        while(i<n && j<m){
+        while(i<a.size() && j<b.size()){
             int start1=a[i][0];
             int end1=a[i][1];
             int start2=b[j][0];
