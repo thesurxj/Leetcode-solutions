@@ -3,27 +3,25 @@ public:
     vector<vector<int>> insert(vector<vector<int>>& a,
                                vector<int>& newInterval) {
         vector<vector<int>> res;
-        a.push_back(newInterval);
 
-        sort(a.begin(), a.end());
-
-        int start1 = a[0][0];
-        int end1 = a[0][1];
-
-        for (int i = 1; i < a.size(); i++) {
-            int start2 = a[i][0];
-            int end2 = a[i][1];
-
-            if (end1 >= start2) {
-                start1 = min(start1, start2);
-                end1 = max(end1, end2);
-                continue;
-            }
-            res.push_back({start1, end1});
-            start1 = start2;
-            end1 = end2;
+        int n=a.size();
+        int i=0;
+        
+        while(i<n && a[i][1]<newInterval[0]){
+            res.push_back(a[i]);
+            i++;
         }
-        res.push_back({start1, end1});
+        while(i<n && a[i][0]<=newInterval[1]){
+            newInterval[0]=min(newInterval[0],a[i][0]);
+            newInterval[1]=max(newInterval[1],a[i][1]);
+            i++;
+        }
+        res.push_back(newInterval);
+
+        while(i<n){
+            res.push_back(a[i]);
+            i++;
+        }
 
         return res;
     }
