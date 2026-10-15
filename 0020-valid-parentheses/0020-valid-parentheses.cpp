@@ -16,13 +16,16 @@ public:
                     st.pop();
                 } else if (s[i] == '}' and st.top() == '{') {
                     st.pop();
-                }
-                else{
+                } else {
                     return false;
                 }
             }
         }
-        return st.empty();
+        if (st.empty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 };
 
