@@ -12,8 +12,9 @@ public:
             while(!st.empty() and st.top()<=nums[idx]){
                 st.pop();
             }
-            if(st.empty()) res[idx]=-1;
-            else res[idx]=st.top();
+            if(i<n and !st.empty()){
+                res[idx]=st.top();
+            }
             st.push(nums[idx]);
         }
         return res;
