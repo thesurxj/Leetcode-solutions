@@ -1,0 +1,30 @@
+
+class Solution {
+public:
+    int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+        if (k <= 1) return 0;
+
+        int n = nums.size();
+        int left = 0;
+        long long product = 1;
+        int count = 0;
+
+        for (int right = 0; right < n; right++) {
+            product *= nums[right];
+
+            while (product >= k) {
+                product /= nums[left];
+                left++;
+            }
+
+            count += right - left + 1;
+        }
+
+        return count;
+    }
+};
+
+
+// Synced seamlessly with LeetHub Pro
+// Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+// Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
